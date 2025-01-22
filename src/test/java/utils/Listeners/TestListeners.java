@@ -9,13 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tests.BaseTest;
+import stepDefinations.Hooks;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
 import utils.Log;
 import utils.WebDriverFactory;
 
-public class TestListeners extends BaseTest implements ITestListener {
+public class TestListeners extends Hooks implements ITestListener {
 
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
