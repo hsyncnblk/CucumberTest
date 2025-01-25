@@ -1,20 +1,20 @@
 package stepDefinations;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Log;
+import utils.ScreenshotHelper;
 import utils.WebDriverFactory;
 
 import java.time.Duration;
 
 public class Hooks {
 
-    @Before
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         Log.info("Test is starting...");
         WebDriverFactory.getDriver().get("https://www.lcw.com/");
         Log.info("Navigated to LCW home page.");
@@ -34,8 +34,16 @@ public class Hooks {
         }
     }
 
-    @After
-    public void tearDown() {
+
+
+    @AfterStep
+    public void takeScreenshotAfterStep(io.cucumber.java.Scenario scenario) {
+        // Her adımda ekran görüntüsü almak için (isteğe bağlı)
+        ScreenshotHelper.takeScreenshot(WebDriverFactory.getDriver(), "Step_" + scenario.getName());
+    }
+
+    @AfterAll
+    public static void tearDown() {
         Log.info("Test is ending. Closing the browser...");
        // WebDriverFactory.closeDriver();
     }

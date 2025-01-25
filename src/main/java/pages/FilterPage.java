@@ -136,9 +136,9 @@ public class FilterPage extends BasePage{
 
         clickElement(mostSales);
 
-        click(fourthProduct);
+        //click(fourthProduct);
 
-        driver.navigate().refresh();
+     //   driver.navigate().refresh();
     }
 
 }
